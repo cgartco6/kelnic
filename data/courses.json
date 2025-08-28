@@ -1,0 +1,56 @@
+[
+    {
+        "id": "ai-programming",
+        "name": "AI Programming Mastery",
+        "description": "Learn to build advanced AI systems with Python, TensorFlow, and PyTorch. Includes real-world projects.",
+        "price": 1599,
+        "duration": "8 weeks",
+        "level": "Intermediate",
+        "modules": [
+            "Introduction to AI Concepts",
+            "Python for AI Development",
+            "Machine Learning Fundamentals",
+            "Neural Networks and Deep Learning",
+            "Natural Language Processing",
+            "Computer Vision",
+            "AI Deployment Strategies",
+            "Capstone Project"
+        ]
+    },
+    {
+        "id": "cybersecurity",
+        "name": "Cybersecurity Essentials",
+        "description": "Protect systems from threats with this comprehensive cybersecurity course. Includes hands-on labs.",
+        "price": 1439,
+        "duration": "6 weeks",
+        "level": "Beginner",
+        "modules": [
+            "Introduction to Cybersecurity",
+            "Network Security Fundamentals",
+            "Web Application Security",
+            "Cryptography Basics",
+            "Security Operations",
+            "Incident Response"
+        ]
+    },
+    {
+        "id": "data-science",
+        "name": "Data Science Fundamentals",
+        "description": "Master data analysis, visualization, and machine learning with this comprehensive course.",
+        "price": 1999,
+        "duration": "10 weeks",
+        "level": "Advanced",
+        "modules": [
+            "Python for Data Science",
+            "Data Wrangling and Cleaning",
+            "Exploratory Data Analysis",
+            "Statistical Modeling",
+            "Machine Learning Algorithms",
+            "Data Visualization",
+            "Big Data Technologies",
+            "Data Ethics and Privacy",
+            "Real-world Projects",
+            "Career Preparation"
+        ]
+    }
+]

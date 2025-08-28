@@ -1,0 +1,10 @@
+.env
+instance/kelnic.db
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+venv/
+.env/
+*.log
+downloads/

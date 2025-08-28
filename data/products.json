@@ -1,0 +1,34 @@
+[
+    {
+        "id": "ai-content",
+        "name": "AI Content Creation",
+        "description": "Custom AI-generated content tailored to your brand voice and marketing goals.",
+        "price": 1999,
+        "features": ["SEO optimized", "Brand-specific tone", "Multiple revisions", "Fast turnaround"],
+        "category": "service"
+    },
+    {
+        "id": "algorithm-creation",
+        "name": "Algorithm Creation",
+        "description": "Custom algorithms designed to solve your specific business problems and optimize processes.",
+        "price": 3199,
+        "features": ["Custom development", "Performance optimization", "Documentation", "Support"],
+        "category": "service"
+    },
+    {
+        "id": "security-scripts",
+        "name": "Security Scripts",
+        "description": "Protect your systems with custom security scripts designed to prevent vulnerabilities.",
+        "price": 2399,
+        "features": ["Vulnerability assessment", "Custom scripts", "Implementation guidance", "Updates"],
+        "category": "service"
+    },
+    {
+        "id": "marketing-campaigns",
+        "name": "Marketing Campaigns",
+        "description": "Data-driven marketing campaigns tailored to your target audience and business goals.",
+        "price": 3999,
+        "features": ["Audience research", "Campaign strategy", "Content creation", "Performance analytics"],
+        "category": "service"
+    }
+]

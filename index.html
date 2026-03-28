@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelnic Solutions | Autonomous AI Business Dashboard</title>
+    <!-- Tailwind CSS + Font Awesome + Chart.js -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0c10 0%, #12161f 100%);
+        }
+        .glass-card {
+            background: rgba(18, 22, 31, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(66, 153, 225, 0.2);
+            border-radius: 1rem;
+        }
+        .hover-glow:hover {
+            box-shadow: 0 0 15px rgba(66, 153, 225, 0.4);
+            transition: all 0.2s ease;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #a0c4ff, #7b9eff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-item.active {
+            background: rgba(66, 153, 225, 0.2);
+            border-left: 3px solid #4299e1;
+            color: white;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-gray-200 antialiased">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 glass-card m-4 p-4 flex flex-col space-y-6">
+            <div class="flex items-center space-x-3 px-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-brain text-white text-sm"></i>
+                </div>
+                <span class="text-xl font-bold gradient-text">Kelnic</span>
+                <span class="text-xs bg-blue-900/50 px-2 py-0.5 rounded-full">AI v3.0</span>
+            </div>
+            <nav class="flex-1 space-y-2">
+                <a href="#" class="nav-item active flex items-center space-x-3 px-3 py-2 rounded-lg transition"><i class="fas fa-chart-line w-5"></i><span>Dashboard</span></a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-800/50 transition"><i class="fas fa-chart-pie w-5"></i><span>Revenue</span></a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-800/50 transition"><i class="fas fa-bullhorn w-5"></i><span>Campaigns</span></a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-800/50 transition"><i class="fab fa-twitter w-5"></i><span>Social Monitor</span></a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-800/50 transition"><i class="fas fa-coins w-5"></i><span>Finance</span></a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-800/50 transition"><i class="fas fa-microchip w-5"></i><span>System Health</span></a>
+                <a href="#" class="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-800/50 transition"><i class="fas fa-cog w-5"></i><span>Settings</span></a>
+            </nav>
+            <div class="text-xs text-gray-500 px-3 py-2 border-t border-gray-800 pt-4">
+                <i class="fas fa-robot mr-1"></i> Alex v2.0 active<br>
+                Self‑healing • Auto‑upgrade
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto p-6">
+            <!-- Top Bar -->
+            <div class="flex justify-between items-center mb-8">
+                <div>
+                    <h1 class="text-3xl font-bold">Owner Dashboard</h1>
+                    <p class="text-gray-400 text-sm">Real‑time AI business insights • Zero marketing budget</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-bell text-gray-400 hover:text-white cursor-pointer"></i>
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                        <span class="text-white text-sm font-bold">JD</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="glass-card p-5 hover-glow transition">
+                    <div class="flex justify-between items-start">
+                        <div><p class="text-gray-400 text-sm">Total Revenue (30d)</p><p class="text-2xl font-bold">$12,847</p></div>
+                        <i class="fas fa-dollar-sign text-blue-400 text-xl"></i>
+                    </div>
+                    <span class="text-green-400 text-sm">+23% vs last month</span>
+                </div>
+                <div class="glass-card p-5 hover-glow transition">
+                    <div class="flex justify-between items-start">
+                        <div><p class="text-gray-400 text-sm">Active Users</p><p class="text-2xl font-bold">1,284</p></div>
+                        <i class="fas fa-users text-purple-400 text-xl"></i>
+                    </div>
+                    <span class="text-green-400 text-sm">+12% this week</span>
+                </div>
+                <div class="glass-card p-5 hover-glow transition">
+                    <div class="flex justify-between items-start">
+                        <div><p class="text-gray-400 text-sm">Conversion Rate</p><p class="text-2xl font-bold">8.4%</p></div>
+                        <i class="fas fa-chart-simple text-green-400 text-xl"></i>
+                    </div>
+                    <span class="text-green-400 text-sm">+1.2% from last week</span>
+                </div>
+                <div class="glass-card p-5 hover-glow transition">
+                    <div class="flex justify-between items-start">
+                        <div><p class="text-gray-400 text-sm">Upgrade Funds</p><p class="text-2xl font-bold">$2,318</p></div>
+                        <i class="fas fa-arrow-up text-yellow-400 text-xl"></i>
+                    </div>
+                    <span class="text-blue-400 text-sm">Ready for next tier</span>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div class="glass-card p-5">
+                    <h2 class="text-lg font-semibold mb-2">Revenue Trend</h2>
+                    <canvas id="revenueChart" height="200"></canvas>
+                </div>
+                <div class="glass-card p-5">
+                    <h2 class="text-lg font-semibold mb-2">Social Engagement (Alex)</h2>
+                    <canvas id="socialChart" height="200"></canvas>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="glass-card p-5">
+                <div class="border-b border-gray-800 mb-4">
+                    <nav class="flex space-x-4">
+                        <button class="tab-btn active text-blue-400 border-b-2 border-blue-400 pb-2" data-tab="overview">Overview</button>
+                        <button class="tab-btn text-gray-400 pb-2" data-tab="finance">Finance</button>
+                        <button class="tab-btn text-gray-400 pb-2" data-tab="social">Social Activity</button>
+                        <button class="tab-btn text-gray-400 pb-2" data-tab="health">System Health</button>
+                    </nav>
+                </div>
+
+                <!-- Tab Content: Overview -->
+                <div id="tab-overview" class="tab-content">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-md font-medium mb-3"><i class="fas fa-clock text-blue-400 mr-2"></i> Recent Activity</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-start space-x-3"><i class="fas fa-check-circle text-green-400 mt-1"></i><div><p class="text-sm">New template pack "AI Tool Breakdown" generated by Designer Agent</p><p class="text-xs text-gray-500">2 hours ago</p></div></div>
+                                <div class="flex items-start space-x-3"><i class="fas fa-comment-dots text-blue-400 mt-1"></i><div><p class="text-sm">Alex replied to a tweet about Premiere Pro struggles</p><p class="text-xs text-gray-500">3 hours ago</p></div></div>
+                                <div class="flex items-start space-x-3"><i class="fas fa-chart-line text-purple-400 mt-1"></i><div><p class="text-sm">Revenue tracker: +$847 from Stripe today</p><p class="text-xs text-gray-500">4 hours ago</p></div></div>
+                                <div class="flex items-start space-x-3"><i class="fas fa-heartbeat text-red-400 mt-1"></i><div><p class="text-sm">Self‑healing agent restarted Redis container</p><p class="text-xs text-gray-500">6 hours ago</p></div></div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-md font-medium mb-3"><i class="fas fa-chart-simple text-green-400 mr-2"></i> Top Performing Tiers</h3>
+                            <div class="space-y-2">
+                                <div><div class="flex justify-between"><span>Tier 3: AI Tool Breakdown</span><span>$3,245</span></div><div class="w-full bg-gray-800 rounded-full h-2"><div class="bg-blue-500 h-2 rounded-full" style="width: 68%"></div></div></div>
+                                <div><div class="flex justify-between"><span>Tier 1: Software Demo</span><span>$2,890</span></div><div class="w-full bg-gray-800 rounded-full h-2"><div class="bg-blue-500 h-2 rounded-full" style="width: 60%"></div></div></div>
+                                <div><div class="flex justify-between"><span>Tier 5: Business Case Studies</span><span>$1,987</span></div><div class="w-full bg-gray-800 rounded-full h-2"><div class="bg-blue-500 h-2 rounded-full" style="width: 41%"></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Finance -->
+                <div id="tab-finance" class="tab-content hidden">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-md font-medium mb-3">Revenue Breakdown</h3>
+                            <canvas id="pieChart" height="200"></canvas>
+                        </div>
+                        <div>
+                            <h3 class="text-md font-medium mb-3">Recent Payouts</h3>
+                            <table class="w-full text-sm">
+                                <thead class="text-gray-400"><tr><th>Date</th><th>FNB</th><th>African Bank</th><th>Status</th></tr></thead>
+                                <tbody>
+                                    <tr class="border-t border-gray-800"><td>2025-03-24</td><td>$1,234</td><td>$823</td><td class="text-green-400">Paid</td></tr>
+                                    <tr class="border-t border-gray-800"><td>2025-03-17</td><td>$1,102</td><td>$735</td><td class="text-green-400">Paid</td></tr>
+                                    <tr class="border-t border-gray-800"><td>2025-03-10</td><td>$987</td><td>$658</td><td class="text-yellow-400">Pending Upload</td></tr>
+                                </tbody>
+                            </table>
+                            <a href="#" class="inline-block mt-4 text-blue-400 text-sm"><i class="fas fa-download mr-1"></i> Download CSV for pending payout</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Social Activity -->
+                <div id="tab-social" class="tab-content hidden">
+                    <div class="space-y-4">
+                        <div class="bg-gray-800/30 p-4 rounded-lg">
+                            <div class="flex items-center space-x-2 mb-2"><i class="fab fa-twitter text-blue-400"></i><span class="font-medium">Alex</span><span class="text-xs text-gray-500">2 hours ago</span></div>
+                            <p class="text-sm">"Ugh, I know that struggle. I spent hours trying to get the right transition. 😩"</p>
+                            <div class="mt-2 text-xs text-gray-400">Replied to @user123 → DM sent with link</div>
+                        </div>
+                        <div class="bg-gray-800/30 p-4 rounded-lg">
+                            <div class="flex items-center space-x-2 mb-2"><i class="fab fa-reddit-alien text-orange-400"></i><span class="font-medium">Alex (Reddit)</span><span class="text-xs text-gray-500">5 hours ago</span></div>
+                            <p class="text-sm">"Totally feel you. I was in the same boat a few months ago."</p>
+                            <div class="mt-2 text-xs text-gray-400">Upvoted, user replied → private message sent</div>
+                        </div>
+                        <div class="text-center text-gray-400 text-sm mt-4">Alex scanned 47 posts today, engaged with 12.</div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: System Health -->
+                <div id="tab-health" class="tab-content hidden">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-gray-800/30 p-4 rounded-lg"><i class="fas fa-server text-blue-400 mr-2"></i> Orchestrator API: <span class="text-green-400">Online</span></div>
+                        <div class="bg-gray-800/30 p-4 rounded-lg"><i class="fas fa-database text-blue-400 mr-2"></i> OCI Database: <span class="text-green-400">Connected</span></div>
+                        <div class="bg-gray-800/30 p-4 rounded-lg"><i class="fas fa-chart-line text-blue-400 mr-2"></i> Redis Cache: <span class="text-green-400">Operational</span></div>
+                        <div class="bg-gray-800/30 p-4 rounded-lg"><i class="fas fa-microchip text-blue-400 mr-2"></i> OCI Ampere CPU: <span class="text-yellow-400">42% used</span></div>
+                        <div class="bg-gray-800/30 p-4 rounded-lg"><i class="fas fa-envelope text-blue-400 mr-2"></i> Email Delivery: <span class="text-green-400">2,345/3,000 today</span></div>
+                        <div class="bg-gray-800/30 p-4 rounded-lg"><i class="fas fa-robot text-blue-400 mr-2"></i> Agent Health: All 17 agents running</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Chat Widget (Minimal) -->
+            <div class="fixed bottom-4 right-4 glass-card p-3 rounded-full shadow-lg flex items-center space-x-3 cursor-pointer hover-glow">
+                <i class="fas fa-headset text-blue-400"></i>
+                <span class="text-sm">Kelnic Assistant</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Tab switching
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = {
+            overview: document.getElementById('tab-overview'),
+            finance: document.getElementById('tab-finance'),
+            social: document.getElementById('tab-social'),
+            health: document.getElementById('tab-health')
+        };
+        tabs.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.getAttribute('data-tab');
+                Object.values(contents).forEach(c => c.classList.add('hidden'));
+                contents[tabName].classList.remove('hidden');
+                tabs.forEach(b => {
+                    b.classList.remove('text-blue-400', 'border-b-2', 'border-blue-400');
+                    b.classList.add('text-gray-400');
+                });
+                btn.classList.add('text-blue-400', 'border-b-2', 'border-blue-400');
+                btn.classList.remove('text-gray-400');
+            });
+        });
+
+        // Revenue Chart
+        const ctxRev = document.getElementById('revenueChart').getContext('2d');
+        new Chart(ctxRev, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Revenue ($)',
+                    data: [2450, 3120, 3890, 4780],
+                    borderColor: '#4299e1',
+                    backgroundColor: 'rgba(66,153,225,0.1)',
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#ccc' } } } }
+        });
+
+        // Social Chart (Alex interactions)
+        const ctxSocial = document.getElementById('socialChart').getContext('2d');
+        new Chart(ctxSocial, {
+            type: 'bar',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [
+                    { label: 'Comments', data: [12, 15, 8, 20, 18, 22, 25], backgroundColor: '#4299e1' },
+                    { label: 'DMs Sent', data: [5, 7, 4, 9, 8, 12, 14], backgroundColor: '#9f7aea' }
+                ]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#ccc' } } } }
+        });
+
+        // Pie Chart for Revenue Breakdown
+        const ctxPie = document.getElementById('pieChart').getContext('2d');
+        new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: ['Stripe', 'PayPal', 'PayFast'],
+                datasets: [{ data: [6420, 2840, 1500], backgroundColor: ['#4299e1', '#48bb78', '#ed8936'] }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#ccc' } } } }
+        });
+    </script>
+</body>
+          </html>

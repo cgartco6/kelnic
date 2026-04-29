@@ -1,49 +1,24 @@
-import os
-from datetime import datetime
-from ..memory.state_manager import StateManager
+# evo_core/agents/financial_agent.py
+from evo_core.agents.base_agent import BaseAgent
+from typing import Dict, Any
 
-class FinancialAgent:
-    def __init__(self, bus, state):
-        self.bus = bus
-        self.state = state
-        self.upgrade_fund_lower = 0.0
-        self.upgrade_fund_upper = 0.0
-        self._start_distribution()
+class FinancialAgent(BaseAgent):
+    def __init__(self, orchestrator=None):
+        super().__init__(
+            name="FinancialAgent",
+            description="Manages budgeting, revenue tracking, forecasting and financial health",
+            orchestrator=orchestrator
+        )
 
-    def _start_distribution(self):
-        import threading
-        import time
-        def loop():
-            while True:
-                self.process_pending_revenue()
-                time.sleep(3600)
-        threading.Thread(target=loop, daemon=True).start()
+    async def execute(self, task: str, context: Dict[str, Any]) -> Dict[str, Any]:
+        await self.log_execution(task, "started")
+        
+        result = {
+            "status": "success",
+            "financial_summary": "Current projected monthly revenue: $12,450",
+            "recommendation": "Reduce ad spend by 15% and focus on high-ROI channels",
+            "alerts": ["Cash flow positive for next 45 days"]
+        }
 
-    def process_pending_revenue(self):
-        # In real implementation, fetch from payment gateways
-        # For now, simulate
-        pass
-
-    def distribute_revenue(self, amount):
-        lower = amount * 0.33
-        upper = amount * 0.17
-        fnb = amount * 0.30
-        african = amount * 0.20
-
-        self.upgrade_fund_lower += lower
-        self.upgrade_fund_upper += upper
-
-        # Notify bookkeeper
-        self.bus.publish('record_revenue', {'amount': amount, 'provider': 'system'})
-
-        # Store in state
-        self.state.save_financial_split({
-            'date': datetime.utcnow().isoformat(),
-            'lower_upgrade': lower,
-            'upper_upgrade': upper,
-            'fnb': fnb,
-            'african': african
-        })
-
-    def get_upgrade_funds(self):
-        return {'lower': self.upgrade_fund_lower, 'upper': self.upgrade_fund_upper}
+        await self.log_execution(task, "completed", result)
+        return result

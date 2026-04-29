@@ -1,0 +1,17 @@
+name: Backtest
+on:
+  schedule:
+    - cron: '0 2 * * *'
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Run backtest
+        run: python scripts/backtest.py

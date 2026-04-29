@@ -1,6 +1,15 @@
+# backend/routes/invoices.py
 from fastapi import APIRouter
+from .marketing import TaskRequest
+
 router = APIRouter()
 
-@router.get("/")
-async def list_invoices():
-    return []
+@router.post("/run")
+async def run_invoicing_task(request: TaskRequest):
+    from backend.main import app
+    result = await app.state.orchestrator.process_task(
+        task=request.task,
+        session_id=request.session_id,
+        context=request.context
+    )
+    return {"success": True, "result": result}

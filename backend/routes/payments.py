@@ -1,16 +1,15 @@
-from fastapi import APIRouter, Request, HTTPException
-import stripe
-import os
+# backend/routes/payments.py
+from fastapi import APIRouter
+from .marketing import TaskRequest
+
 router = APIRouter()
 
-@router.post("/stripe-webhook")
-async def stripe_webhook(request: Request):
-    payload = await request.body()
-    sig_header = request.headers.get('stripe-signature')
-    # Forward to orchestrator or process directly
-    return {"status": "ok"}
-
-@router.post("/create-checkout")
-async def create_checkout(tier: str, price: float, email: str):
-    # Call payment agent
-    return {"url": "https://checkout.stripe.com/pay/..."}
+@router.post("/run")
+async def run_payment_task(request: TaskRequest):
+    from backend.main import app
+    result = await app.state.orchestrator.process_task(
+        task=request.task,
+        session_id=request.session_id,
+        context=request.context
+    )
+    return {"success": True, "result": result}

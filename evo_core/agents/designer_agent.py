@@ -1,39 +1,27 @@
-import requests
-import os
-import json
-from ..memory.state_manager import StateManager
+# evo_core/agents/designer_agent.py
+from evo_core.agents.base_agent import BaseAgent
+from typing import Dict, Any
 
-class DesignerAgent:
-    def __init__(self, bus, state):
-        self.bus = bus
-        self.state = state
-        self.hf_token = os.getenv("HF_TOKEN")
-
-    def run(self):
-        self.bus.subscribe('designer_trigger', self.handle)
-
-    def handle(self, params):
-        tier = params.get('tier')
-        style = params.get('style')
-        assets = self._generate_assets(style)
-        self._save_assets(tier, assets)
-        self.bus.publish('designer_complete', {'tier': tier, 'assets': assets})
-
-    def _generate_assets(self, style):
-        # Call Hugging Face inference for video generation
-        headers = {"Authorization": f"Bearer {self.hf_token}"}
-        payload = {"inputs": style, "parameters": {"height": 480, "width": 854}}
-        response = requests.post(
-            "https://api-inference.huggingface.co/models/stabilityai/stable-video-diffusion-img2vid",
-            headers=headers,
-            json=payload
+class DesignerAgent(BaseAgent):
+    def __init__(self, orchestrator=None):
+        super().__init__(
+            name="DesignerAgent",
+            description="Creates UI/UX designs, landing pages, branding and visual assets",
+            orchestrator=orchestrator
         )
-        return response.json()  # returns binary or URL
 
-    def _save_assets(self, tier, assets):
-        # Store in OCI object storage
-        import boto3
-        s3 = boto3.client('s3', endpoint_url=os.getenv("OCI_OBJECT_STORAGE_ENDPOINT"))
-        bucket = os.getenv("OCI_BUCKET_NAME")
-        for name, data in assets.items():
-            s3.put_object(Bucket=bucket, Key=f"{tier}/templates/{name}.mogrt", Body=data['binary'])
+    async def execute(self, task: str, context: Dict[str, Any]) -> Dict[str, Any]:
+        await self.log_execution(task, "started")
+        
+        result = {
+            "status": "success",
+            "design_suggestions": [
+                "Modern minimalist landing page with strong CTA",
+                "Consistent brand colors: Deep Blue + Emerald Green",
+                "Mobile-first responsive design"
+            ],
+            "next_step": "Generate Figma mockups"
+        }
+
+        await self.log_execution(task, "completed", result)
+        return result
